@@ -1,0 +1,60 @@
+import datetime
+import random
+
+# ------------------------------
+# Empresa de Mascarillas Lavables
+# ------------------------------
+
+print("===================================")
+print("    Mascarillas Salud+ Online")
+print("===================================\n")
+
+# Entrada de datos
+precio_unitario = int(input("Ingrese el valor unitario de la mascarilla: $"))
+cantidad = int(input("Ingrese la cantidad de mascarillas que desea: "))
+comuna = input("Ingrese el tipo de comuna (misma / aledaña / otra): ")
+
+# Calcular subtotal
+subtotal = cantidad * precio_unitario
+
+# Calcular costo de envío
+if subtotal > 15000:
+    envio = 0
+elif comuna.lower() == "misma":
+    envio = 1000
+elif comuna.lower() == "aledaña":
+    envio = 2000
+else:
+    envio = 3000
+
+# IVA 19%
+iva = int(subtotal * 0.19)
+
+# Total a pagar
+total = subtotal + envio + iva
+
+# Generar número de boleta y fecha
+num_boleta = random.randint(10000, 99999)
+fecha = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+
+# ------------------------------
+# Formato Boleta
+# ------------------------------
+print("\n\n===================================")
+print("           BOLETA DE VENTA         ")
+print("===================================")
+print(f" Empresa : Mascarillas Salud+ Online")
+print(f" Boleta N°: {num_boleta}")
+print(f" Fecha    : {fecha}")
+print("-----------------------------------")
+print(f" Producto       Cant.   V.Unit   Total")
+print(f" Mascarilla     {cantidad:<7} ${precio_unitario:<7} ${subtotal}")
+print("-----------------------------------")
+print(f" Subtotal:                      ${subtotal}")
+print(f" IVA (19%):                     ${iva}")
+print(f" Envío:                         ${envio}")
+print("-----------------------------------")
+print(f" TOTAL A PAGAR:                 ${total}")
+print("===================================")
+print("   ¡Gracias por su compra! 😷🧾")
+print("===================================\n")
